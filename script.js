@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('download-btn');
     const restartBtn = document.getElementById('restart-btn');
 
-    // --- STATE APLIKASI ---
     let selectedFormat = null;
     let photoLimit = 4;
     let capturedPhotos = [];
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let dragOffsetX, dragOffsetY;
     let selectedFilter = 'none';
 
-    // --- ASET & KONFIGURASI ---
     const backgroundColors = ['#FFFFFF', '#27272a', '#a25cdfff', '#9f1239', '#556B2F'];
     let selectedBgColor = '#FFFFFF';
 
@@ -56,10 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'images/stickers/aduhai12.jpeg',
     ];
     
-    // --- FUNGSI BANTU ---
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-    // --- INISIALISASI ---
     function init() {
         setupBackground();
 
@@ -107,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         livePreviewCanvas.addEventListener('mouseleave', handleCanvasMouseUp);
     }
     
-    // --- LOGIKA LATAR BELAKANG ANIMASI ---
     const bgCanvas = document.getElementById('animated-bg');
     const bgCtx = bgCanvas.getContext('2d');
     let particles = [];
@@ -177,8 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setupBackground();
     });
 
-
-    // --- ALUR KERJA UTAMA ---
     function selectFormat(event) {
         formatOptions.forEach(opt => opt.classList.remove('selected-format'));
         const selectedOption = event.currentTarget;
@@ -274,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LOGIKA KANVAS (MENGGAMBAR) ---
     function cropAndDrawImage(ctx, img, dx, dy, dWidth, dHeight) {
         const imgAspectRatio = img.width / img.height;
         const canvasAspectRatio = dWidth / dHeight;
@@ -411,10 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.restore();
     }
 
-
-    // --- LOGIKA PENGEDITAN STIKER ---
     function addSticker(stickerImgElement) {
-        // Ukuran stiker diubah menjadi 150x150 pixels agar lebih pas di kanvas
         const stickerSize = 150; 
         const sticker = { 
             img: stickerImgElement, 
@@ -456,8 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function handleCanvasMouseUp() { isDragging = false; selectedStickerIndex = -1; }
-
-    // --- UTILITAS & RESET ---
+    
     function stopWebcam() {
         if (stream) stream.getTracks().forEach(track => track.stop());
         stream = null;

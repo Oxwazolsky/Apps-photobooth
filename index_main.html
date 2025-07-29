@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putra PhotoBooth</title>
+    <link rel="icon" href="images/Putra.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-indigo-900 text-white">
+    <!-- Kanvas Latar Belakang Animasi -->
+    <canvas id="animated-bg" class="fixed top-0 left-0 w-full h-full z-0"></canvas>
+    <!-- Wrapper konten agar berada di atas animasi -->
+    <div class="relative z-10">
+        <!-- Header -->
+        <header class="min-h-screen flex items-center justify-center p-8">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!--  Teks 'Tentang Kami' -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight">
+                        Selamat Datang di <span class="text-indigo-400 logo-font">Putra Photo Booth</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-300">
+                        Kami menyediakan pengalaman photobooth digital yang modern dan menyenangkan. Abadikan momen berharga Anda dengan berbagai format dan stiker lucu. Sempurna untuk acara, pesta, atau sekadar bersenang-senang!
+                    </p>
+                    <div class="mt-10">
+                        <a href="#photobooth-app" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-transform transform hover:scale-105 inline-block">
+                            Coba Sekarang!
+                        </a>
+                    </div>
+                </div>
+                <!-- Kolom Gambar Animasi -->
+                <div class="flex justify-center items-center">
+                    <div class="p-4 bg-white rounded-lg shadow-2xl transform -rotate-3 animate-float">
+                        <img src="images/hasil.png" alt="Contoh hasil photobooth" class="rounded-sm w-80">
+                        <div class="mt-2 flex justify-between items-center">
+                            <p class="logo-font text-gray-800 text-lg">PutraPhotoBooth</p>
+                            <p class="text-gray-500 text-sm">28/07/2025 ♡</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Aplikasi Photobooth Utama -->
+        <main id="photobooth-app" class="py-16 md:py-24">
+            <div class="w-full max-w-5xl mx-auto px-4">
+                <div id="start-screen" class="text-center p-8 bg-white rounded-2xl shadow-xl text-gray-800">
+                    <h1 class="text-4xl font-bold mb-2 text-indigo-600 logo-font">Photobooth Digital</h1>
+                    <p class="text-gray-600 mb-8">Pilih format foto Anda untuk memulai.</p>
+                    <div class="flex flex-col sm:flex-row justify-center items-stretch gap-6 mb-8 text-gray-700">
+                        <!-- Opsi Format 4-Strip Klasik -->
+                        <div data-format="strip" class="format-option flex-1 p-4 border-2 border-gray-300 rounded-lg cursor-pointer transition-all hover:border-indigo-500 hover:bg-indigo-50 flex flex-col items-center justify-center">
+                            <div class="w-20 h-32 bg-white mx-auto flex flex-col items-center p-1 rounded-sm shadow-md border">
+                                <p class="text-black text-xs logo-font">Photo</p>
+                                <div class="flex-grow w-full flex flex-col justify-between my-1 space-y-1">
+                                    <div class="w-full h-1/4 bg-pink-200 rounded-sm"></div>
+                                    <div class="w-full h-1/4 bg-pink-200 rounded-sm"></div>
+                                    <div class="w-full h-1/4 bg-pink-200 rounded-sm"></div>
+                                    <div class="w-full h-1/4 bg-pink-200 rounded-sm"></div>
+                                </div>
+                            </div>
+                            <p class="mt-3 font-medium text-sm">Strip 2x6 inci (4 Foto)</p>
+                        </div>
+                        <!-- Opsi Format 6 Foto menjadi 2 kolom -->
+                        <div data-format="double-strip" class="format-option flex-1 p-4 border-2 border-gray-300 rounded-lg cursor-pointer transition-all hover:border-indigo-500 hover:bg-indigo-50 flex flex-col items-center justify-center">
+                            <div class="w-28 h-32 bg-white mx-auto flex flex-col items-center p-1 rounded-sm shadow-md border">
+                                <p class="text-black text-xs logo-font">Photo</p>
+                                <div class="flex-grow w-full flex justify-center items-center gap-1 my-1">
+                                    <div class="w-1/2 h-full flex flex-col space-y-1">
+                                        <div class="w-full h-1/3 bg-pink-200 rounded-sm"></div>
+                                        <div class="w-full h-1/3 bg-pink-200 rounded-sm"></div>
+                                        <div class="w-full h-1/3 bg-pink-200 rounded-sm"></div>
+                                    </div>
+                                    <div class="w-1/2 h-full flex flex-col space-y-1">
+                                        <div class="w-full h-1/3 bg-pink-200 rounded-sm"></div>
+                                        <div class="w-full h-1/3 bg-pink-200 rounded-sm"></div>
+                                        <div class="w-full h-1/3 bg-pink-200 rounded-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 font-medium text-sm">Strip 2x6 inci (6 Foto)</p>
+                        </div>
+                    </div>
+    
+                    <button id="start-photobooth-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-all disabled:bg-gray-400 disabled:cursor-not-allowed"><i class="fa fa-camera" aria-hidden="true"></i> Mulai Sesi</button>
+                </div>
+    
+                <!-- LAYAR 2: ANTARMUKA UTAMA (KAMERA, PRATINJAU, EDIT) -->
+                <div id="photobooth-main-ui" class="hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                        <div class="w-full flex flex-col gap-4">
+                            <!-- Tampilan Kamera -->
+                            <div class="relative w-full aspect-[4/3] bg-black rounded-xl overflow-hidden border-4 border-white shadow-lg">
+                                <video id="webcam" class="w-full h-full object-cover" autoplay playsinline></video>
+                                <div id="countdown-overlay" class="hidden absolute inset-0 items-center justify-center"><span id="countdown-timer" class="text-white text-8xl font-bold">3</span></div>
+                                <p id="camera-error" class="hidden absolute inset-0 flex items-center justify-center text-center text-red-400 p-4 bg-black bg-opacity-75">Gagal akses kamera.</p>
+                            </div>
+                            <!-- Panel Kontrol & Edit -->
+                            <div class="bg-white p-4 rounded-xl shadow-lg text-gray-800">
+                                <div id="capture-controls" class="text-center">
+                                    <p id="photo-counter" class="text-gray-600 mb-3 text-md font-medium">Siap-siap...</p>
+                                </div>
+                                <div id="edit-controls" class="hidden mt-4">
+                                    <h3 class="text-lg font-bold mb-3 text-center">Edit Hasil Foto</h3>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label for="filter-select" class="block text-sm font-semibold mb-2">Filter Foto</label>
+                                            <select id="filter-select" class="w-full p-2 text-sm rounded-md bg-gray-100 border border-gray-300">
+                                                <option value="none">Tanpa Filter</option>
+                                                <option value="bw">Hitam Putih</option>
+                                                <option value="sepia">Sepia</option>
+                                                <option value="vintage">Vintage</option>
+                                                <option value="retro">Retro</option>
+                                                <option value="beach">Pantai</option>
+                                            </select>
+                                        </div>
+                                        <div id="background-editor">
+                                            <label class="block text-sm font-semibold mb-2">Warna Latar</label>
+                                            <div id="background-options" class="grid grid-cols-5 gap-2"></div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-semibold mb-2">Tambah Stiker</label>
+                                            <div id="sticker-options" class="grid grid-cols-6 gap-2 bg-gray-100 p-2 rounded-lg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Kolom Pratinjau  -->
+                        <div id="live-preview-container" class="w-full hidden">
+                            <div class="sticky top-6 flex flex-col items-center">
+                                <div id="canvas-wrapper" class="w-full flex justify-center">
+                                    <canvas id="live-preview-canvas" class="rounded-lg border-2 border-white bg-gray-200 shadow-lg"></canvas>
+                                </div>
+                                <div id="final-actions" class="hidden text-center mt-4 flex justify-center gap-4">
+                                    <a id="download-btn" href="#" download="photobooth-hasil.png" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg text-md transition-all"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
+                                    <button id="restart-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg text-md transition-all"><i class="fa fa-refresh" aria-hidden="true"></i> Ulangi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    
+        <!-- Footer -->
+        <footer class="bg-transparent py-8">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                    <div>
+                        <a href="#" class="text-3xl font-bold text-white logo-font transition-opacity hover:opacity-80">Putra Photo Booth</a>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="https://web.facebook.com/dit.p.501/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-2xl" aria-label="Facebook">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-2xl" aria-label="WhatsApp">
+                            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_muhaditputra/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors text-2xl" aria-label="Instagram">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-700/50 text-center">
+                    <p class="text-sm text-gray-400">&copy; 2025 Putra Photo Booth. All Rights Reserved. Dibuat dengan ❤️ dan kode.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
